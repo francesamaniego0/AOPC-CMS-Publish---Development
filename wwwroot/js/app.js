@@ -346,53 +346,8 @@ async function ShowPiegraphMostClickStore() {
 //     console.log(error);
 // });
 
-//populate Country
-async function GetCountryForBusinessLocations() {
-    var data = {};
-    $.ajax(
-        {
-            url: "/Dashboard/GetCountryList",
-            data: {
-                data: data
-            },
-            type: "POST",
-            datatype: "json"
-        }).done(function (data) {
-            console.log(data);
-            $("#country").empty();
-            $("#country").append('<option value="0" disabled selected>-Select Country-</option>');
-            for (var i = 0; i < data.length; i++) {
-                $("#country").append('<option value="' + data[i].name + '">' + data[i].name + "</option>");
-            }
 
-            //$.unblockUI();
-        }).fail(function () {
-            alert("There was an Error When Loading Data...");
-        });
-}
-async function GetCountryForMembership() {
-    var data = {};
-    $.ajax(
-        {
-            url: "/Dashboard/GetCountryList",
-            data: {
-                data: data
-            },
-            type: "POST",
-            datatype: "json"
-        }).done(function (data) {
-            console.log(data);
-            $("#memcountry").empty();
-            $("#memcountry").append('<option value="" disabled selected>-Select Country-</option>');
-            for (var i = 0; i < data.length; i++) {
-                $("#memcountry").append('<option value="' + data[i].name + '">' + data[i].name + "</option>");
-            }
 
-            //$.unblockUI();
-        }).fail(function () {
-            alert("There was an Error When Loading Data...");
-        });
-}
 
 async function ShowOptBtype() {
     $.ajax({ url: "/Business/GetBusinessTypeListOption", data: {}, type: "GET", datatype: "json" }).done(function (data) {
