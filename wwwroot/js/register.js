@@ -1520,7 +1520,9 @@ function createUser() {
         type: "POST",
         datatype: "json",
     }).done(function (response) {
-        if (response.stats == "Error in Registration" || response.stats == "User Information Already Used!" || response.stats == "User registration limit reached, no additional users can be registered at this time!") {
+        //alert(response.stats);
+        //console.log(response.stats);
+        if (response.stats == "Error in Registration" || response.stats == "User Information Already Used!" || response.stats == "VIP User registration limit reached, no additional VIP users can be registered at this time!" || response.stats == "User registration limit reached, no additional users can be registered at this time!") {
             notifyMsg('Warning!', response.stats, 'yellow', 'fas fa-exclamation-triangle');
             $("#empid").focus();
         }

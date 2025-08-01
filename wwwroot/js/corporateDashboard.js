@@ -1,6 +1,6 @@
 ﻿async function corporateUserCount() {
     var data = {};
-    data.userName = username;
+    data.corporateId = corporateId;
     //console.log(data);
     //console.log(data);
     $.ajax({
