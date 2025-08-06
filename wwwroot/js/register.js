@@ -1520,13 +1520,23 @@ function createUser() {
         type: "POST",
         datatype: "json",
     }).done(function (response) {
-        //alert(response.stats);
+        //console.log(response);
         //console.log(response.stats);
-        if (response.stats == "Error in Registration" || response.stats == "User Information Already Used!" || response.stats == "VIP User registration limit reached, no additional VIP users can be registered at this time!" || response.stats == "User registration limit reached, no additional users can be registered at this time!") {
+        //alert("API Response: "+response.stats);
+        //console.log(response.stats);
+        if (response.stats == "Error in Registration"
+            || response.stats == "User Information Already Used!"
+            || response.stats == "VIP User registration limit reached, no additional VIP users can be registered at this time!"
+            || response.stats == "User registration limit reached, no additional users can be registered at this time!"
+            || response.stats == "Username is Already Used and Active!"
+            || response.stats == "Email is Already Used and Active!"
+            || response.stats == "EmployeeID is Already Used and Active!") {
+            //alert("Warning");
             notifyMsg('Warning!', response.stats, 'yellow', 'fas fa-exclamation-triangle');
             $("#empid").focus();
         }
         else if (response.stats == 'Registered Successfully' || response.stats == 'Updated Successfully') {
+            aler("Success");
             $.ajax({
                 url: '/Register/UploadFile',
                 type: 'POST',
@@ -1543,20 +1553,18 @@ function createUser() {
             getUserRegistration();
             // cms_paginationCorpUser(spanval, filtername, posId, corpid);
         }
-        else {
+        else if (response.stats == ''){
 
+            //alert("Error");
             notifyMsg('Error!', response.stats, 'red', 'fas fa-exclamation-triangle');
-
-            clear();
-            $("#h-close").click();
-            getUserRegistration();
+            $("#empid").focus();
         }
 
-        $.unblockUI();
-        getUserRegistration();
+        //$.unblockUI();
+        //getUserRegistration();
 
     }).fail(function () {
         alert("There was an Error When Loading Data...");
     });
-    instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+    //instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
 }
