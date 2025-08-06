@@ -1526,7 +1526,7 @@ function createUser() {
             notifyMsg('Warning!', response.stats, 'yellow', 'fas fa-exclamation-triangle');
             $("#empid").focus();
         }
-        else {
+        else if (response.stats == 'Registered Successfully' || response.stats == 'Updated Successfully') {
             $.ajax({
                 url: '/Register/UploadFile',
                 type: 'POST',
@@ -1542,7 +1542,14 @@ function createUser() {
             $("#h-close").click();
             getUserRegistration();
             // cms_paginationCorpUser(spanval, filtername, posId, corpid);
+        }
+        else {
 
+            notifyMsg('Error!', response.stats, 'red', 'fas fa-exclamation-triangle');
+
+            clear();
+            $("#h-close").click();
+            getUserRegistration();
         }
 
         $.unblockUI();
