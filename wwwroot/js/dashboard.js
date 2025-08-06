@@ -262,7 +262,13 @@ async function getComponyInformation() {
                 data: 'registered'
             },
             {
-                data: 'unregistered'
+                data: 'unregistered',
+                render: function (data, type, row) {
+                    let vip = '<td><p>' + data + '</p>' +
+                        '<p style="font-size: 10px"> Unregistered VIP count: ' + row.unregisteredVIP + '</p></td > ';
+
+                    return vip;
+                }
             },
             {
                 data: 'registeredVIP',
