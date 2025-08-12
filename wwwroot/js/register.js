@@ -1536,7 +1536,7 @@ function createUser() {
             $("#empid").focus();
         }
         else if (response.stats == 'Registered Successfully' || response.stats == 'Updated Successfully') {
-            aler("Success");
+            //aler("Success");
             $.ajax({
                 url: '/Register/UploadFile',
                 type: 'POST',
